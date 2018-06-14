@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
     else
       @category_id = Category.find_by(name: params[:category]).id
-      @posts = Post.where(category_id: @category.id).order('created_at DESC')
+      @posts = Post.where(category_id: @category_id).order('created_at DESC')
   end
 end
 
@@ -58,10 +58,22 @@ end
     end
   end
 
+  protected
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+       username == "test" && password == "test"
+    end
+  end
+
+  def admin
+    redirect_to root_path if authenticate
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :category_id)
+    params.require(:post).permit(:title, :body, :category_id, :image)
   end
 
   def find_post
