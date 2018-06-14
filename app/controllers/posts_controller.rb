@@ -2,33 +2,33 @@ class PostsController < ApplicationController
   before_action :authenticate_admin!, except: [:index, :show]
   before_action :find_post, only: [:edit, :update, :show, :delete]
 
-  # index action renders all posts
+  # renders all posts
   def index
     @posts = Post.all
   end
 
-  # new action creates new post
+  # creates new post
   def new
     @post = Post.new
   end
 
-  # create action saves post to database
+  # saves post to database
   def create
     @post = Post.new
     if @post.save(post_params)
       flash[:notice] = "Successfully created post!"
       redirect_to post_path(@post)
     else
-      flash[:alert] = "Error creaing post!"
+      flash[:alert] = "Error creating post!"
       render :new
     end
   end
 
-    # edit action retrieves post and renders it to edit page
+    #  retrieves post and renders it to edit page
   def edit
   end
 
-  # update action updates post with the new info
+  # updates post with the new info
   def update
     if @post.update_attributes(post_params)
       flash[:notice] = "Successfully updated post!"
@@ -38,11 +38,11 @@ class PostsController < ApplicationController
   end
 end
 
-  # show action renders the individual post retrieving the id
+  #renders the individual post retrieving the id
   def show
   end
 
-  # destroy action removes post permanently from the database
+  # removes post permanently from the database
   def destroy
     if @post.destroy
       flash[:notice] = "Successfully deleted post!"

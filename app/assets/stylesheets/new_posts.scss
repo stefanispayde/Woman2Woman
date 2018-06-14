@@ -1,0 +1,17 @@
+form#new_post.simple_form.new_post {
+  margin-top: 80px;
+}
+h2#reg_new {
+  margin-top: 70px;
+  font-family: 'Quicksand', sans-serif;
+}
+input.btn {
+  border: gray solid 1px;
+}
+input#post_title.form-control.string.required {
+  width: 70%;
+}
+label.form-control-label.string.required, input.btn {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+}
