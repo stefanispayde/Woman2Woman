@@ -21,9 +21,10 @@ end
   # saves post to database
   def create
     @post = Post.new
+    byebug
     if @post.save(post_params)
       flash[:notice] = "Successfully created post!"
-      redirect_to post_path(@post)
+      redirect_to (@post)
     else
       flash[:alert] = "Error creating post!"
       render :new
