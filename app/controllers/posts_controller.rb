@@ -21,7 +21,7 @@ end
   # saves post to database
   def create
     @post = Post.new
-    byebug
+    # byebug
     if @post.save(post_params)
       flash[:notice] = "Successfully created post!"
       redirect_to (@post)
@@ -39,7 +39,7 @@ end
   def update
     if @post.update_attributes(post_params)
       flash[:notice] = "Successfully updated post!"
-      redirect_to post_path(@posts)
+      redirect_to posts_path
     else
       flash[:alert] = "Error updating post!"
   end
