@@ -20,11 +20,12 @@ end
 
   # saves post to database
   def create
-    @post = Post.new
+    @post = Post.new(post_params)
     # byebug
-    if @post.save(post_params)
+    if @post.valid?
+      @post.save
       flash[:notice] = "Successfully created post!"
-      redirect_to (@post)
+      redirect_to(@post)
     else
       flash[:alert] = "Error creating post!"
       render :new
@@ -47,6 +48,7 @@ end
 
   #renders the individual post retrieving the id
   def show
+    @post = Post.find(params[:id])
   end
 
   # removes post permanently from the database
