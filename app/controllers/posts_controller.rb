@@ -12,12 +12,10 @@ class PostsController < ApplicationController
       @posts = Post.where(category_id: @category_id).order('created_at DESC')
   end
 end
-
   # creates new post
   def new
     @post = Post.new
-  end
-
+end
   # saves post to database
   def create
     @post = Post.new(post_params)
@@ -34,16 +32,15 @@ end
 
     #  retrieves post and renders it to edit page
   def edit
+    @post = Post.find(params[:id])
   end
 
   # updates post with the new info
   def update
-    if @post.update_attributes(post_params)
+    @post = Post.find(params[:id])
+    @post.update(post_params)
       flash[:notice] = "Successfully updated post!"
-      redirect_to posts_path
-    else
-      flash[:alert] = "Error updating post!"
-  end
+      redirect_to (@post)
 end
 
   #renders the individual post retrieving the id
@@ -61,17 +58,8 @@ end
     end
   end
 
-  protected
 
-  def authenticate
-    authenticate_or_request_with_http_basic do |username, password|
-       username == "test" && password == "test"
-    end
-  end
 
-  def admin
-    redirect_to root_path if authenticate
-  end
 
   private
 
