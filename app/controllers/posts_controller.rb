@@ -12,10 +12,12 @@ class PostsController < ApplicationController
       @posts = Post.where(category_id: @category_id).order('created_at DESC')
   end
 end
+
   # creates new post
   def new
     @post = Post.new
 end
+
   # saves post to database
   def create
     @post = Post.new(post_params)

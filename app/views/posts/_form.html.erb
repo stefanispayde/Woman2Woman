@@ -1,4 +1,5 @@
 <%= simple_form_for @post do |f| %>
+
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -16,9 +17,9 @@
 
   <div class="form-group">
     <%= f.collection_select(:category_id, Category.all, :id, :name,
-    {prompt:'Select a category'})%>
+    {prompt:'Select a category'})%><br>
 
-    <div class="form-group">
+  <div class="form-group">
     <%= f.input :title, class: "form-control" %>
   </div>
 
@@ -27,7 +28,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :image, class: "form-control" %>
+    <%= f.file_field :image, class: "form-control" %>
   </div>
 
   <div class="form-group">
