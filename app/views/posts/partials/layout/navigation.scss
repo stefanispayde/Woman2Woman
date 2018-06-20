@@ -2,6 +2,14 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400|Sue+Ellen+Francisco');
 
+ .category li{
+  list-style: none;
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+}
+
 .navbar-default, .navbar-toggle:focus, .collapsed, button.navbar-toggle {
   background: black !important;
   opacity: .7;

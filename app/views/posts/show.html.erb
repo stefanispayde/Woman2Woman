@@ -8,7 +8,7 @@
 <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?"} %>
 
 
-<h2>Comments</h2>
+<h2>Comments (<%= @post.comments.size %>)</h2>
 <%= render partial: 'posts/comment', collection: @post.comments.reverse %>
 
 <%= render partial: 'comments/form' %>
