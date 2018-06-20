@@ -10,3 +10,8 @@
 
 <h2>Comments</h2>
 <%= render partial: 'posts/comment', collection: @post.comments.reverse %>
+
+<%= render partial: 'comments/form' %>
+
+
+<%= link_to 'Posts', root_path %>

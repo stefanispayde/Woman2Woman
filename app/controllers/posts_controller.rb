@@ -48,6 +48,9 @@ end
   #renders the individual post retrieving the id
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
+    @comment.post_id = @post.id
+
   end
 
   # removes post permanently from the database
