@@ -34,6 +34,7 @@ gem 'pry'
 gem 'devise'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
+gem 'cancan', '~> 1.6', '>= 1.6.10'
 # Use ActiveStorage variant
 gem 'carrierwave'
 gem 'mini_magick'

@@ -15,8 +15,13 @@
       </div>
       <% if admin_signed_in? %>
         <%= link_to "Show", post_path(post), class: "btn btn-primary" %>
+
+        <% if can? :update, @post %>
         <%= link_to "Edit", edit_post_path(post), class: "btn btn-default" %>
+        <% end %>
+        <% if can? :destroy, @post %>
         <%= link_to "Delete", post_path(post), class: "btn btn-danger", data: {:confirm => "Are you sure?"}, method: :delete %>
+        <% end %>
       <% end %>
       <hr />
     </div>
