@@ -32,6 +32,8 @@ gem 'pry'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 # Use ActiveStorage variant
 gem 'carrierwave'
 gem 'mini_magick'

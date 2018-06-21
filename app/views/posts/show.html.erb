@@ -10,7 +10,6 @@
 
 <h2>Comments (<%= @post.comments.size %>)</h2>
 <%= render partial: 'posts/comment', collection: @post.comments.reverse %>
-
 <%= render partial: 'comments/form' %>
 
 
