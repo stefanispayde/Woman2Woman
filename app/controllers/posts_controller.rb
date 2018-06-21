@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_admin!, except: [:index, :show]
   before_action :find_post, only: [:edit, :update, :show, :delete]
 
@@ -12,6 +13,15 @@ class PostsController < ApplicationController
       @posts = Post.where(category_id: @category_id).order('created_at DESC')
     end
   end
+
+#renders the individual post retrieving the id
+  def show
+    @post = Post.find(params[:id])
+    @comment = Comment.new
+    @comment.post_id = @post.id
+
+  end
+
 
   # creates new post
   def new
@@ -35,6 +45,7 @@ end
     #  retrieves post and renders it to edit page
   def edit
     @post = Post.find(params[:id])
+    unauthorized! if cannot? :update, @post
   end
 
   # updates post with the new info
@@ -45,13 +56,6 @@ end
       redirect_to (@post)
 end
 
-  #renders the individual post retrieving the id
-  def show
-    @post = Post.find(params[:id])
-    @comment = Comment.new
-    @comment.post_id = @post.id
-
-  end
 
   # removes post permanently from the database
   def destroy
