@@ -2,10 +2,12 @@ class PostsController < ApplicationController
   before_action :authenticate_admin!, except: [:index, :show]
   before_action :find_post, only: [:edit, :update, :show, :delete]
 
+
   # renders all posts
   def index
     if params[:category].blank?
-      @posts = Post.all.order("created_at DESC")
+      @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 2)
+
 
     else
       @category_id = Category.find_by(name: params[:category]).id
