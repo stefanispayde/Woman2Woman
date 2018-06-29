@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # renders all posts
   def index
     if params[:category].blank?
-      @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 2)
+      @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
 
 
     else
@@ -18,6 +18,14 @@ end
   # creates new post
   def new
     @post = Post.new
+end
+
+#renders the individual post retrieving the id
+  def show
+    @post = Post.find(params[:id])
+    @comment = Comment.new
+    @comment.post_id = @post.id
+
 end
 
   # saves post to database
@@ -46,14 +54,6 @@ end
       flash[:notice] = "Successfully updated post!"
       redirect_to (@post)
 end
-
-  #renders the individual post retrieving the id
-  def show
-    @post = Post.find(params[:id])
-    @comment = Comment.new
-    @comment.post_id = @post.id
-
-  end
 
   # removes post permanently from the database
   def destroy
