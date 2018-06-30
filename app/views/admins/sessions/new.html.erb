@@ -1,6 +1,11 @@
 <div class="col-sm-offset-4 col-sm-4 col-xs-12">
   <h2 class="text-center">Log in</h2>
 
+  <div class="form-group">
+    <%= f.label :author_name %><br />
+    <%= f.password_field :auhor_name, autocomplete: "on", class: "form-control" %>
+  </div>
+
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form"}) do |f| %>
     <div class="form-group">
       <%= f.label :email %><br />
